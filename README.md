@@ -5,7 +5,10 @@
 This is a Piano Tile Game that has been created for the purpose of "Introduction to Visual Media Programming" course in Sogang University 2023-2.
 It is a simple arcade-style game built using the Pygame library in Python. The theme of the game is from the movie/musical "Anastasia". The game involves a player navigating 'Anastasia' to meet the falling dancers corresponding to the music "Once Upon A December" (Main theme song from the movie/ musical)
 
-![Gameplay Demo](demo.gif)
+![Movie_musicBox](musicbox.PNG)
+![Musical_musicBox](musicbox2.PNG)
+![Movie_scene1](ballroom1.jpg)
+![Movie_scene2](ballroom2.jpg)
 
 ## Features
 
