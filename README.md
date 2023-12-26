@@ -17,12 +17,7 @@ It is a simple arcade-style game built using the Pygame library in Python. The t
 
 - [Installation](#installation)
 - [How to Play](#how-to-play)
-- [Gameplay Screenshots](#gameplay-screenshots)
-- [Dependencies](#dependencies)
-- [License](#license)
-- [Contributing](#contributing)
-- [Acknowledgments](#acknowledgments)
-- [Contact](#contact)
+
 
 ## Installation
 
@@ -56,9 +51,5 @@ It is a simple arcade-style game built using the Pygame library in Python. The t
 - Hit falling tiles with the player character to score points.
 - The game dynamically adjusts background and gameplay elements based on progress.
 
-## Gameplay Screenshots
-
-![Starting Page](screenshots/starting_page.png)
-![Gameplay](screenshots/gameplay.png)
 
 
