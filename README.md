@@ -1,17 +1,17 @@
-# final-project: Piano Tile Game
+# Final-project: Piano Tile Game
 
 ## Overview
 
-Piano Tile Game is a simple arcade-style game built using the Pygame library in Python. The game involves a player navigating a character to hit falling tiles corresponding to a musical sequence.
+This is a Piano Tile Game that has been created for the purpose of "Introduction to Visual Media Programming" course in Sogang University 2023-2.
+It is a simple arcade-style game built using the Pygame library in Python. The theme of the game is from the movie/musical "Anastasia". The game involves a player navigating 'Anastasia' to meet the falling dancers corresponding to the music "Once Upon A December" (Main theme song from the movie/ musical)
 
 ![Gameplay Demo](demo.gif)
 
 ## Features
 
-- Responsive tile movement based on a predefined musical sequence.
-- Dynamic background changes based on gameplay progress.
-- Scoring system based on successfully hitting tiles with the player character.
-- Music integration with adjustable volume based on gameplay interactions.
+- Dynamic change on the player skin, falling dancers and background based on the music and the story of the original movie.
+- Scoring system based on whether the player has successfully met the falling dancers.
+- Changes in music volume based on whether the player has met the dancers. (when Anastasia is far away from the tile, the music turns to mute)
 
 ## Table of Contents
 
@@ -29,13 +29,13 @@ Piano Tile Game is a simple arcade-style game built using the Pygame library in 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/piano-tile-game.git
+    git clone [https://github.com/klee4297/final-project]
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd piano-tile-game
+    cd final-project
     ```
 
 3. Install the required dependencies:
@@ -47,7 +47,7 @@ Piano Tile Game is a simple arcade-style game built using the Pygame library in 
 4. Run the game:
 
     ```bash
-    python piano_tile_game.py
+    python pianotile1227_20201109.py
     ```
 
 ## How to Play
