@@ -1,6 +1,8 @@
+# Import necessary libraries
 import pygame
 import random
 
+# Initialize Pygame
 pygame.init()
 
 # Constants
@@ -13,22 +15,30 @@ pygame.display.set_caption("Piano Tile Game")
 clock = pygame.time.Clock()
 
 # Load background image
-background_image = pygame.image.load("bgimg2.png")  # Replace with the path to your background image
+background_image = pygame.image.load("bgimg2.png")  
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
 # Load player image
-player_image = pygame.image.load("anastasia1.png")  # Replace with the path to your player image
-player_image = pygame.transform.scale(player_image, (50, 70))  # Resize the player image if needed
+player_image = pygame.image.load("anastasia1.png")  
+player_image = pygame.transform.scale(player_image, (50, 70))  
 
 # Load tile images
 tile_images = [
-    pygame.image.load("tile1.png"),    # Replace with the path to your red tile image
-    pygame.image.load("tile2.png"),  # Replace with the path to your green tile image
-    pygame.image.load("tile3.png"),   # Replace with the path to your blue tile image
-    pygame.image.load("tile5.png"), # Replace with the path to your yellow tile image
+    pygame.image.load("tile1.png"),    
+    pygame.image.load("tile2.png"),  
+    pygame.image.load("tile3.png"),   
+    pygame.image.load("tile5.png"), 
 ]
 
-# Player
+# Load alternative tile images
+Ntile_images = [
+    pygame.image.load("Gtile1.png"),    
+    pygame.image.load("Gtile2.png"),  
+    pygame.image.load("Gtile3.png"),   
+    pygame.image.load("Gtile5.png"), 
+]
+
+# Player class
 class Player(pygame.sprite.Sprite):
     def __init__(self, screen_width):
         super().__init__()
@@ -39,9 +49,9 @@ class Player(pygame.sprite.Sprite):
         self.speed = 10
         self.is_colliding = False
 
-# Tile
+# Tile class
 class Tile(pygame.sprite.Sprite):
-    def __init__(self, screen_width, image, voice,initial_x, initial_y):
+    def __init__(self, screen_width, image, voice, initial_x, initial_y):
         super().__init__()
         self.image = pygame.transform.scale(image, (50, 150))  # Resize the tile image if needed
         self.rect = self.image.get_rect()
@@ -59,15 +69,16 @@ class Tile(pygame.sprite.Sprite):
     def update(self):
         self.rect.y += self.speed  # Move the tile downward
 
+# Function for the starting page
 def starting_page():
-    start_image1 = pygame.image.load("Fimg1.png")  # Replace with the path to your starting image 1
+    start_image1 = pygame.image.load("Fimg1.png")
     start_image1 = pygame.transform.scale(start_image1, (WIDTH, HEIGHT))
 
-    start_image2 = pygame.image.load("Fimg2.png")  # Replace with the path to your starting image 2
+    start_image2 = pygame.image.load("Fimg2.png")
     start_image2 = pygame.transform.scale(start_image2, (WIDTH, HEIGHT))
 
-    nkl_image = pygame.image.load("NKL.png")  # Replace with the path to your NKL image
-    nkl_image = pygame.transform.scale(nkl_image, (93, 100))  # Adjust the size as needed
+    nkl_image = pygame.image.load("NKL.png")
+    nkl_image = pygame.transform.scale(nkl_image, (93, 100))
 
     nkl_rect = nkl_image.get_rect()
     nkl_rect.topleft = (10, HEIGHT - 110)
@@ -87,7 +98,7 @@ def starting_page():
                 waiting = False
 
         # Check if NKL is in the middle of the screen
-        if WIDTH // 3 < nkl_rect.centerx < 2 * WIDTH // 3:
+        if WIDTH // 3 < nkl_rect.centerx < 2 * WIDTH // 3 and HEIGHT // 3 < nkl_rect.centery < 2 * HEIGHT // 3:
             screen.blit(start_image2, (0, 0))  # Draw the starting image 2
         else:
             screen.blit(start_image1, (0, 0))  # Draw the starting image 1
@@ -103,9 +114,10 @@ def starting_page():
 
     return nkl_rect
 
-    
+# Main game loop
 def main():
     pygame.init()
+    
     # Show starting page and get NKL rect
     nkl_rect = starting_page()
     
@@ -117,8 +129,8 @@ def main():
     tiles = pygame.sprite.Group()
     all_sprites.add(player)
 
-    # Sequence of tiles (0 = Red, 1 = Green, 2 = Blue, 3 = Yellow)
-    tile_sequence = [0, 1, 2, 3, 1,3,2,0,3,2,3,2,1,0,2,1,2,3,0,1,1,2,0,3,2,1,2,1,0,3,1,2,1,0,2,3,1,2,0,3,2,0,1,3,2,1,3,2,3,1,0,2,1,0,1,2,3,2,0,1,2,0,1,2,0,3,1,0]  # Adjust the sequence as needed
+    # Sequence of tiles
+    tile_sequence = [0, 1, 2, 3, 1, 3, 2, 0, 3, 2, 3, 2, 1, 0, 2, 1, 2, 3, 0, 1, 1, 2, 0, 3, 2, 1, 2, 1, 0, 3, 1, 2, 1, 0, 2, 3, 1, 2, 0, 3, 2, 0, 1, 3, 2, 1, 3, 2, 3, 1, 0, 2, 1, 0, 1, 2, 3, 2, 0, 1, 2, 0, 1, 2, 0, 3, 1, 0]  # Adjust the sequence as needed
     current_tile_index = 0
     tile_spawn_timer = 0
 
@@ -161,7 +173,6 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.rect.left > WIDTH // 6:
             player.rect.x -= player.speed
@@ -171,7 +182,10 @@ def main():
         # Update timer and spawn tiles based on the sequence
         tile_spawn_timer += 1
         if tile_spawn_timer >= 20:  # Adjust the delay between tile spawns
-            tile_image = tile_images[tile_sequence[current_tile_index]]
+            if total_tiles_spawned <= (image_change_threshold):
+                tile_image = tile_images[tile_sequence[current_tile_index]]
+            else:
+                tile_image = Ntile_images[tile_sequence[current_tile_index]]
             initial_x, initial_y = tile_positions[tile_sequence[current_tile_index]]
             new_tile = Tile(WIDTH, tile_image, voice, initial_x, initial_y)
             
@@ -182,7 +196,7 @@ def main():
             elif total_tiles_spawned > image_change_threshold:
                 player.image = pygame.image.load("anastasia2.png")  # Replace with the path to the new player image
                 player.image = pygame.transform.scale(player.image, (50, 70))  # Resize the new player image if needed
-
+                
 
 
             overlap = pygame.sprite.spritecollideany(new_tile, tiles)
@@ -227,5 +241,6 @@ def main():
 
     pygame.quit()
 
+# Run the main function if the script is executed
 if __name__ == "__main__":
     main()
