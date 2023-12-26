@@ -17,6 +17,7 @@ It is a simple arcade-style game built using the Pygame library in Python. The t
 
 - [Installation](#installation)
 - [How to Play](#how-to-play)
+- [Gameplay Screenshots](#gameplay-screenshots)
 
 
 ## Installation
@@ -52,4 +53,8 @@ It is a simple arcade-style game built using the Pygame library in Python. The t
 - The game dynamically adjusts background and gameplay elements based on progress.
 
 
-
+## Gameplay Screenshots
+![Starting Page](screenshots/startingPage_1.png)
+![Starting Page](screenshots/startingPage_2.png)
+![Gameplay](screenshots/gamePlay_1.png)
+![Gameplay](screenshots/gamePlay_2.png)
