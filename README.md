@@ -24,7 +24,7 @@ It is a simple arcade-style game built using the Pygame library in Python. The t
 1. Clone the repository:
 
     ```bash
-    git clone [https://github.com/klee4297/final-project]
+    git clone https://github.com/klee4297/final-project
     ```
 
 2. Navigate to the project directory:
